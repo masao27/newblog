@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col s6 offset-s3">
+    <div class="card cyan lighten-5">
+      <div class="card-content black-text">
+      <p><%= simple_format(blog.text) %></p>
+      </div>
+      <% if user_signed_in? && current_user.id == blog.user_id %>
+        <div class="card-action">
+          <%= link_to '編集', "/nblogs/#{blog.id}/edit", method: :get %>
+          <%= link_to '削除', "/nblogs/#{blog.id}", method: :delete %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

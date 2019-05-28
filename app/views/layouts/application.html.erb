@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blogsapp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+  <style>
+    body{
+      linear-gradient(45deg, red, black);
+    }
+  </style>
+ </head>
+
+  <body>
+  <nav class="indigo darken-4">
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo center">MiniBlog</a>
+      <ul class="left hide-on-med-and-down"> 
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </li>
+          <li>
+          <a class="post" href="/nblogs/new">投稿する</a>
+          </li>         
+        <% else %>
+          <li>
+          <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+          </li>
+          <li>
+          <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+          </li> 
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+    <%= yield %>
+  </body>
+</html>
+
